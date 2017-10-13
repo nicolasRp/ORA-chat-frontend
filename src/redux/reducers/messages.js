@@ -1,4 +1,4 @@
-import {ADD_MESSAGE, RECEIVE_MESSAGE, } from './actionTypes';
+import {ADD_MESSAGE, RECEIVE_MESSAGE } from '../actionTypes';
 
 
 

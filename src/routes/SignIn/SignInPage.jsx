@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'readux';
+import { bindActionCreators } from 'redux';
 
-import SignInContainer from './SignInContainer.jsx'
+import SignInContainer from './SingInContainer.jsx'
 
 
 export default SignInContainer;
