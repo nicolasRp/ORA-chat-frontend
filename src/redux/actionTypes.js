@@ -1,0 +1,15 @@
+//messages
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+export const LOAD_MESSAGES = 'LOAD_MESSAGES';
+export const LOAD_MESSAGES_SUCCESS = 'LOAD_MESSAGES_SUCCESS';
+export const LOAD_MESSAGES_FAIL = 'LOAD_MESSAGES_FAIL';
+//user
+export const REGISTER_USER = 'REGISTER_USER';
+
+export const RECEIVE_SOCKET = 'RECEIVE_SOCKET';
+
+
+
+
+
