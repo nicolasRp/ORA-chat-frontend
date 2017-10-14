@@ -1,8 +1,12 @@
 import {combineReducers} from 'redux';
-import messages from './messages';
+import chatReducer  from './chat';
+import userReducer  from './user';
+
 
 const reducer = combineReducers({
-    messages
+    chat: chatReducer,
+    user: userReducer
 })
 
 export default reducer;
+
