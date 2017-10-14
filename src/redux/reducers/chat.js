@@ -9,7 +9,7 @@ const initialState = {
 }
 
 
-export default function messagesReducer(state = initialState, action){
+export default function chatReducer(state = initialState, action){
     switch(action.type){
         case ADD_MESSAGE:
             return state
