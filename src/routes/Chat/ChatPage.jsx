@@ -7,7 +7,7 @@ const mapStateToProps = state =>({
     data: state
 })
 const mapDispatchToProps = dispatch => ({
-    ...bindActionCreators(chat, dispatch)
+    actions: bindActionCreators(chat, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatContainer);

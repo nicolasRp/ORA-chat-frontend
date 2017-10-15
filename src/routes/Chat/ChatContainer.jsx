@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Chat from './components/Chat.jsx';
+import io from 'socket.io-client';
 
-
+const socket = io("http://localhost:1337");
 
 class ChatContainer extends Component {
     constructor(props) {
@@ -20,9 +23,10 @@ class ChatContainer extends Component {
     render() {
         const {user} = this.props.data
         return (
-            <div>
-                <button onClick={this.props.userLogout}>logout</button>
+            <div className="chat">
+                <button className="button" onClick={this.props.actions.userLogout}>logout</button>
                 user: {user.name}
+                <Chat send={this.props.actions.sendMessage}/>
              </div>
         )
     }
