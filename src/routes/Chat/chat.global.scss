@@ -1,6 +1,47 @@
-.chat{
-    background-color: black;
-    .button{
-        border: 1px solid red;
+@import "../../styles/bootstrap/variables";
+@import "../../styles/bootstrap/mixins";
+@import "../../styles/bootstrap/buttons";
+
+.chat {
+    .topBar {
+        background-color: $brand-orange;
+        color: #FFF;
+        font-weight: 100;
+        font-size: 150%;
+    }
+    .userInfo {
+        background-color: darken($brand-orange, 5%);
+        color: #FFF;
+        padding: 1.5em 0;
+        h2 {
+            font-weight: 400;
+            font-style: italic;
+        }
+        p {
+            font-weight: 300;
+            font-size: 120%;
+        }
+    }
+    .chatLog {
+        padding: 3em 0;
+        .form-control {
+            border-radius: 30px;
+            padding: 1.5em 2em;
+            border: $brand-orange solid 1px;
+            outline: none;
+            font-weight: 300;
+            &:hover, &:active, &:focus {
+                box-shadow: none;
+            }
+        }
+        .btn[type="submit"] {
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.1);
+        }
+    }
+    footer {
+        background-color: rgb(242, 242, 242);
+        padding: 2.5em 0 2em;
+        color: darken(rgb(242, 242, 242), 30%);
+        font-size: 80%;
     }
 }
