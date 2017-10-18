@@ -1,7 +1,7 @@
 import * as types from '../actionTypes';
 import fetch from 'isomorphic-fetch';
 
-const BASE_URL = "http://localhost:1337/create";
+const BASE_URL = "http://localhost:8080/create";
 
 function registerUser(){
     return{ 
@@ -26,7 +26,7 @@ export function registerUser(){
         })
         const data = res.json()
         Promise.resolve(data)
-        .then(response => dispatch(receiveUser(response[0]))) 
+        .then(response => dispatch(receiveUser(response))) 
     }
 }
 

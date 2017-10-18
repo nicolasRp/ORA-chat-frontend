@@ -16,7 +16,10 @@ class ChatContainer extends Component {
         if (localStorage.getItem("token") == null) {
             this.props.history.push('/chat')
         }
-        
+    
+        this.props.socket.on('new bc message', function(data){
+            console.log('data msg', data)
+        })        
     }
 
     componentWillReceiveProps(nextProps) {
@@ -27,7 +30,6 @@ class ChatContainer extends Component {
     }
 
     render() {
-
         const {user} = this.props.data
         return (
             <div className="chat">
@@ -56,6 +58,7 @@ class ChatContainer extends Component {
                 </div>
                 <div className="chatLog">
                     <Chat 
+                    socket={this.props.socket}
                     messages={this.props.data.chat}
                     user={user} 
                     send={this.props.actions.sendMessage}/>

@@ -22,7 +22,7 @@ class MessageComposer extends Component {
             content,
             time
         }
-
+        this.props.socket.emit('new message', message)
         this.props.send(message)
         this.setState({
             content: ''

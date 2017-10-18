@@ -20,7 +20,9 @@ class Chat extends Component {
                         md={8} mdOffset={2}
                     >
                         <MessageList messages={this.props.messages}/>
-                        <MessageComposer user={this.props.user} 
+                        <MessageComposer 
+                        socket={this.props.socket}
+                        user={this.props.user} 
                         send={this.props.send} />
                     </Col>
                 </Row>
