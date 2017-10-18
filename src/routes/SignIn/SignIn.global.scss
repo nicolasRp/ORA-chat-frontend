@@ -1,0 +1,31 @@
+@keyframes bgAnim {
+  0% {
+    background-size: 0px 0px;
+    background-position: 50%;
+  }
+  100% {
+    background-size: 100% 100%;
+    background-position: cover;
+  }
+}
+
+.signIn {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-image: url("../../assets/Color Burst 2.jpg");
+  animation: bgAnim 2s cubic-bezier(.3,0,0,1);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+  .btnWrapper {
+    grid-row: 1;
+    text-align: center;
+    grid-column: 1;
+  }
+}
