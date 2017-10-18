@@ -3,16 +3,13 @@ import {ADD_MESSAGE, RECEIVE_MESSAGE } from '../actionTypes';
 
 
 const initialState = {
-    loading: false,
-    data:[],
-    fethHistory: []
+    messages:[]
 }
 
-
-export default function chatReducer(state = initialState, action){
-    switch(action.type){
+export default function chatReducer(state = initialState.messages, action){
+    switch(action.type){ 
         case ADD_MESSAGE:
-            return state
+            return state.concat(action.payload)
         default:
             return state    
     }

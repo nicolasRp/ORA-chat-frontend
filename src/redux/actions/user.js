@@ -1,7 +1,7 @@
 import * as types from '../actionTypes';
 import fetch from 'isomorphic-fetch';
 
-const BASE_URL = 'http://localhost:1337/create';
+const BASE_URL = "http://localhost:1337/create";
 
 function registerUser(){
     return{ 
@@ -17,7 +17,7 @@ function receiveUser(user){
 
 export function registerUser(){
     return async dispatch => {
-        const res = await fetch("http://localhost:1337/create", {
+        const res = await fetch(BASE_URL, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
