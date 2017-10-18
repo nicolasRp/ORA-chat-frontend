@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import MessageComposer from './MessageComposer';
 import MessageList from './MessageList';
-import {Col, Grid, Input, Row} from 'react-bootstrap';
 
 
 class Chat extends Component {
