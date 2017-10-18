@@ -9,7 +9,6 @@ import registerServiceWorker from './registerServiceWorker';
 import io from 'socket.io-client';
 
 const socket = io.connect('http://localhost:8080');
-socket.on('messages', msg => console.log(msg));
 
 ReactDOM.render(
   <SocketProvider socket={socket}>
