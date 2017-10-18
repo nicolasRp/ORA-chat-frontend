@@ -2,46 +2,210 @@
 @import "../../styles/bootstrap/mixins";
 @import "../../styles/bootstrap/buttons";
 
+@mixin subgrid($rows: 1fr, $columns: 1fr 60vw 1fr) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+}
+
 .chat {
+  display: grid;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  grid-template-columns: 0vw 100vw;
+  &.drawled {
+    grid-template-columns: 18vw 80vw;
+    .drawler {
+      width: 18vw;
+      padding: 1em;
+    }
+    .wrapper {
+      font-weight: 500 !important;
+      font-style: normal !important;
+      h2, p {
+        font-weight: 500 !important;
+        font-style: normal !important;
+      }
+    }
+  }
+  .drawler {
+    grid-column: 1;
+    grid-row: 1;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0vw;
+    max-width: 18vw;
+    background-image: linear-gradient(to bottom, lighten($brand-orange, 10%), $gray-dark );
+    box-shadow: inset -9px 0 38px rgba(0, 0, 0, 0.30), inset -5px 0 12px rgba(0, 0, 0, 0.22);
+    color: #fff;
+    @include subgrid(30px 1fr 5em, 1fr);
+    .closeBtn {
+      grid-row: 1;
+      grid-column: 1;
+      font-size: 150%;
+      .fa {cursor: pointer;}
+    }
+    .headLine {
+      grid-row: 2;
+      grid-column: 1;
+      text-transform: uppercase;
+      text-align: center;
+      h2 {
+        font-weight: 300;
+      }
+    }
+    .actions {
+      grid-column: 1;
+      grid-row: 3;
+      border-top: solid 1px $gray;
+      padding: 1em 0;
+      .bttn {
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+      .user {
+        opacity: .5;
+        font-size: 80%;
+      }
+    }
+  }
+  .wrapper {
+    display: grid;
+    grid-column: 2 / span 2;
+    grid-row: 1;
+    grid-template-rows: 30px 20vh 1fr 5em;
+    grid-template-columns: 1fr 60vw 1fr;
     .topBar {
-        background-color: $brand-orange;
-        color: #FFF;
-        font-weight: 100;
-        font-size: 150%;
+      position: sticky;
+      top: 0;
+      grid-row: 1;
+      grid-column: 1 / span 3;
+      background-color: $brand-orange;
+      color: #FFF;
+      font-weight: 100;
+      font-size: 150%;
+      z-index: 3;
+      @include subgrid;
+      .menu {
+        grid-column: 2;
+        grid-row: 1;
+        .fa {
+          cursor: pointer;
+        }
+      }
     }
     .userInfo {
-        background-color: darken($brand-orange, 5%);
-        color: #FFF;
-        padding: 1.5em 0;
+      z-index: 3;
+      position: sticky;
+      top: 30px;
+      grid-row: 2;
+      grid-column: 1 / span 3;
+      background-color: darken($brand-orange, 5%);
+      color: #FFF;
+      padding: 1.5em 0;
+      box-shadow: 1em 1.5em 1em #fff;
+      @include subgrid;
+      .data {
+        grid-column: 2;
+        grid-row: 1;
         h2 {
-            font-weight: 400;
-            font-style: italic;
+          font-weight: 400;
+          font-style: italic;
         }
         p {
-            font-weight: 300;
-            font-size: 120%;
+          font-weight: 300;
+          font-size: 120%;
         }
+      }
     }
     .chatLog {
-        padding: 3em 0;
-        .form-control {
+      grid-row: 3;
+      grid-column: 2;
+      @include subgrid(1fr 6em);
+      // Message Item
+      .log {
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        overflow-y: scroll;
+        .msgItem {
+          grid-row: 1;
+          grid-column: 2;
+          display: grid;
+          grid-template-columns: 1fr 200px;
+          grid-template-rows: 30px 1fr;
+          align-items: center;
+          border-bottom: solid 1px $gray-lighter;
+          padding: 2em;
+          &:last-child {
+            border-bottom: none !important;
+          }
+          .msgUser {
+            grid-column: 1;
+            grid-row: 1;
+          }
+          .msgTimestamp {
+            grid-column: 2;
+            grid-row: 1;
+            text-align: center;
+            color: $gray-light;
+          }
+          .msgContent {
+            grid-column: 1 / 2;
+            grid-row: 2;
+          }
+        }
+      }
+      .messageComponse {
+        grid-column: 2;
+        grid-row: 2;
+        position: sticky;
+        bottom: 5em;
+        padding: 0 0 1em;
+        background-color: #fff;
+        box-shadow: 0 -1.5em 1em #fff;
+        @include subgrid(auto, 80% auto);
+        .msgInput {
+          grid-row: 1;
+          grid-column: 1;
+          .form-control {
             border-radius: 30px;
             padding: 1.5em 2em;
             border: $brand-orange solid 1px;
             outline: none;
             font-weight: 300;
             &:hover, &:active, &:focus {
-                box-shadow: none;
+              box-shadow: none;
             }
+          }
         }
-        .btn[type="submit"] {
+        .msgSubmit {
+          grid-row: 1;
+          grid-column: 2;
+          text-align: center;
+          .btn[type="submit"] {
             box-shadow: 0 19px 38px rgba(0, 0, 0, 0.1);
+          }
         }
+      }
     }
     footer {
-        background-color: rgb(242, 242, 242);
-        padding: 2.5em 0 2em;
-        color: darken(rgb(242, 242, 242), 30%);
-        font-size: 80%;
+      z-index: 3;
+      position: sticky;
+      bottom: 0px;
+      grid-row: 4;
+      grid-column: 1 / span 3;
+      background-color: rgb(242, 242, 242);
+      padding: 2.5em 0 2em;
+      color: darken(rgb(242, 242, 242), 30%);
+      font-size: 80%;
+      @include subgrid;
+      .copy {
+        text-align: right;
+        grid-column: 2;
+        grid-row: 1;
+      }
     }
+  }
 }
