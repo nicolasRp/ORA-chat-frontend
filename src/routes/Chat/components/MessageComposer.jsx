@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import {FormGroup, FormControl, Row, Col, Button} from 'react-bootstrap';
 
 class MessageComposer extends Component {
@@ -10,14 +12,21 @@ class MessageComposer extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleSubmit(e) {
-        const user = localStorage.getItem("token")
-        const {content} = this.state
+    handleSubmit(e) { 
+        const {content} = this.state;
+        const time = moment().format('MMM Do YY, h:mm a');
+        const user = this.props.user.name;
+
         const message = {
             user,
-            content
+            content,
+            time
         }
+
         this.props.send(message)
+        this.setState({
+            content: ''
+        })
     }
 
     render() {
@@ -39,9 +48,11 @@ class MessageComposer extends Component {
                     </FormGroup>
                 </Col>
                 <Col xs={3}>
-                    <Button type="submit" className='btn-orange'>
+                    <Button type="submit" 
+                    onClick={this.handleSubmit}
+                    className='btn-orange'>
                         <i className="fa fa-arrow-right" />
-                        {' '}Submit
+                        {''}Submit
                     </Button>
                 </Col>
             </Row>
