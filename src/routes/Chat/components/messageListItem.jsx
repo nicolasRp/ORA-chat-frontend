@@ -4,7 +4,6 @@ import moment from 'moment';
 
 
 const MessageListItem = props => {
-    console.log('props', props)
     return (
         <div className='msgItem'>
             <div className='msgUser'>

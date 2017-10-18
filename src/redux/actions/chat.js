@@ -1,9 +1,9 @@
 import * as types from '../actionTypes';
 import fetch from 'isomorphic-fetch';
 
-const BASE_URL = "http://localhost:8080/send";
+const BASE_URL = "http://localhost:8080";
 
-function addMessage(message){
+export function addMessage(message){
     return{
         type: types.ADD_MESSAGE,
         payload: message
@@ -15,11 +15,32 @@ export function userLogout(){
         type: types.USER_LOGOUT
     }
 }
+function allMessages(messages){
 
+    return{
+        type: types.LOAD_MESSAGES,
+        payload: messages
+    }
+}
+
+export function getAllMessages(){
+    return async dispatch => {
+       const res = await fetch(BASE_URL + '/all', {
+            method: 'GET',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',                
+            'Authorization': 'Bearer ' + localStorage.getItem("token")
+        })
+       const data = res.json()
+       Promise.resolve(data)
+       .then(response => dispatch(allMessages(response)))
+       .catch(err => {throw(err)})
+        
+    }
+}
 export function sendMessage(message){
-    console.log('message in actions', message)
     return dispatch => {
-        fetch(BASE_URL, {
+        fetch(BASE_URL + '/send', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -32,8 +53,7 @@ export function sendMessage(message){
                     "time": message.time
                 })
             
-        }).catch(err => {throw(err)})
-        dispatch(addMessage(message));
+        }).catch(err => {throw(err)});
     }
 }
 

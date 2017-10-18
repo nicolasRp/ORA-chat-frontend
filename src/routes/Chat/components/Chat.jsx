@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList';
-
+import MessageComposer from './MessageComposer';
+import {Row, Grid, Col} from 'react-bootstrap';
 
 class Chat extends Component {
     constructor(props) {
@@ -18,10 +19,6 @@ class Chat extends Component {
                         md={8} mdOffset={2}
                     >
                         <MessageList messages={this.props.messages}/>
-                        <MessageComposer 
-                        socket={this.props.socket}
-                        user={this.props.user} 
-                        send={this.props.send} />
                     </Col>
                 </Row>
             </Grid>

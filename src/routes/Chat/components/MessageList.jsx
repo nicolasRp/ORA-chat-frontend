@@ -3,7 +3,6 @@ import MessageListItem from './MessageListItem.jsx';
 import PropTypes from 'prop-types';
 
 const MessageList = props =>{
-    console.log('props in messageList', props)
 
     return(
     <div>
@@ -12,5 +11,7 @@ const MessageList = props =>{
     )
 }
 
-
+MessageList.propTypes = {
+    messages: PropTypes.arrayOf(PropTypes.object)
+}
 export default MessageList;
